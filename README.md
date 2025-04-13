@@ -84,7 +84,7 @@ The test suite in `test_vulnerabilities.py` demonstrates each vulnerability with
 Clone the repository and set up your environment:
 
 # Clone the repository
-git clone https://github.com/yourusername/imcp.git
+git clone https://github.com/nav33n25/IMCP.git
 cd imcp
 
 # Create a virtual environment
