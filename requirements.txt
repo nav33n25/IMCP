@@ -1,0 +1,10 @@
+flask==2.3.3
+flask-cors==4.0.0
+jsonrpcserver==5.0.9
+openai
+httpx
+python-dotenv==1.0.0
+pyjwt==2.8.0
+numpy
+requests==2.31.0
+tenacity==8.2.3
