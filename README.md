@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/nav33n25-imcp-badge.png)](https://mseep.ai/app/nav33n25-imcp)
+
 # IMCP - Insecure Model Context Protocol
 
 An educational framework for understanding AI security vulnerabilities
