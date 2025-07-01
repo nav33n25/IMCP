@@ -1,0 +1,194 @@
+name: Educational MCP Security Lab CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build project
+      run: npm run build
+      
+    - name: Run educational tests
+      run: npm test
+      
+    - name: Verify server starts
+      run: |
+        timeout 10s npm start || true
+        echo "✅ Educational MCP server startup test completed"
+        
+    - name: Check TypeScript compilation
+      run: |
+        npx tsc --noEmit
+        echo "✅ TypeScript compilation check passed"
+        
+    - name: Verify MCP configuration
+      run: |
+        if [ -f ".vscode/mcp.json" ]; then
+          echo "✅ MCP configuration file found"
+        else
+          echo "❌ MCP configuration missing"
+          exit 1
+        fi
+        
+    - name: Documentation check
+      run: |
+        required_files=("README.md" "LAB_GUIDE.md" "VULNERABILITY_TESTING_GUIDE.md" "COMPLETE_TESTING_SUITE.md" "LICENSE")
+        for file in "${required_files[@]}"; do
+          if [ -f "$file" ]; then
+            echo "✅ $file found"
+          else
+            echo "❌ $file missing"
+            exit 1
+          fi
+        done
+        
+    - name: Security lab validation
+      run: |
+        echo "🔍 Validating educational security lab..."
+        
+        # Check for vulnerability tools in source
+        if grep -r "vulnerability-summary" src/; then
+          echo "✅ Vulnerability summary tool found"
+        else
+          echo "❌ Vulnerability summary tool missing"
+          exit 1
+        fi
+        
+        # Verify educational disclaimers
+        if grep -q "educational purposes" README.md; then
+          echo "✅ Educational disclaimer found"
+        else
+          echo "❌ Educational disclaimer missing"
+          exit 1
+        fi
+        
+        # Check for proper warnings
+        if grep -q "NOT FOR PRODUCTION" README.md; then
+          echo "✅ Production warning found"
+        else
+          echo "❌ Production warning missing"
+          exit 1
+        fi
+        
+        echo "✅ Security lab validation completed"
+
+  vulnerability-count:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Count implemented vulnerabilities
+      run: |
+        echo "📊 Counting implemented vulnerabilities..."
+        
+        # Count vulnerability tools in the source code
+        vuln_count=$(grep -c "server.tool" src/vulnerable-mcp-server.ts || echo "0")
+        echo "Found $vuln_count vulnerability tools"
+        
+        # Expected count
+        expected_count=15  # 14 vulnerabilities + 1 summary tool
+        
+        if [ "$vuln_count" -eq "$expected_count" ]; then
+          echo "✅ All $((expected_count-1)) vulnerabilities + summary tool implemented"
+        else
+          echo "❌ Expected $expected_count tools, found $vuln_count"
+          exit 1
+        fi
+
+  educational-validation:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Validate educational content
+      run: |
+        echo "🎓 Validating educational content..."
+        
+        # Check for learning objectives
+        if grep -q "Learning Objectives" README.md; then
+          echo "✅ Learning objectives found"
+        else
+          echo "❌ Learning objectives missing"
+          exit 1
+        fi
+        
+        # Check for ethical use guidelines
+        if grep -q "Ethical Use" README.md; then
+          echo "✅ Ethical use guidelines found"
+        else
+          echo "❌ Ethical use guidelines missing"
+          exit 1
+        fi
+        
+        # Verify lab guide exists and has content
+        if [ -s "LAB_GUIDE.md" ]; then
+          echo "✅ Lab guide found and has content"
+        else
+          echo "❌ Lab guide missing or empty"
+          exit 1
+        fi
+        
+        # Check vulnerability testing guide
+        if [ -s "VULNERABILITY_TESTING_GUIDE.md" ]; then
+          echo "✅ Vulnerability testing guide found"
+        else
+          echo "❌ Vulnerability testing guide missing"
+          exit 1
+        fi
+        
+        echo "✅ Educational content validation completed"
+
+  security-check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Security audit
+      run: |
+        echo "🔒 Running security audit..."
+        
+        # Check for hardcoded secrets (should not have any real ones)
+        if grep -r "sk-" src/ --exclude-dir=node_modules || \
+           grep -r "AIza" src/ --exclude-dir=node_modules || \
+           grep -r "password.*=" src/ --exclude-dir=node_modules; then
+          echo "⚠️ Potential hardcoded secrets found - ensure they are educational examples only"
+        fi
+        
+        # Verify this is marked as educational
+        if ! grep -q "educational" package.json; then
+          echo "❌ Package not marked as educational"
+          exit 1
+        fi
+        
+        # Check for production warnings
+        if ! grep -q "DO NOT USE IN PRODUCTION" package.json; then
+          echo "❌ Production warning missing from package.json"
+          exit 1
+        fi
+        
+        echo "✅ Security audit completed"

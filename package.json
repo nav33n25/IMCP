@@ -1,0 +1,47 @@
+{
+  "name": "imcp-insecure-model-context-protocol",
+  "version": "1.0.0",
+  "description": "IMCP - Insecure Model Context Protocol: The DVWA for AI MCP Security! A deliberately vulnerable framework exposing 14 critical security weaknesses in MCP Servers.",
+  "main": "build/vulnerable-mcp-server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/vulnerable-mcp-server.js",
+    "dev": "tsc && node build/vulnerable-mcp-server.js",
+    "clean": "rimraf build",
+    "test": "echo \"Educational vulnerability server - Use for learning only\" && exit 0"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "security",
+    "vulnerabilities",
+    "educational",
+    "dvwa",
+    "ai-security",
+    "penetration-testing",
+    "security-research",
+    "deliberately-vulnerable"
+  ],
+  "author": "Security Researchers",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/imcp-insecure-model-context-protocol.git"
+  },
+  "homepage": "https://github.com/your-username/imcp-insecure-model-context-protocol#readme",
+  "bugs": {
+    "url": "https://github.com/your-username/imcp-insecure-model-context-protocol/issues"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

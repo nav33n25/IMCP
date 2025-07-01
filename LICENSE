@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2025 nav33n25
+Copyright (c) 2025 Educational MCP Security Lab
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,23 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+EDUCATIONAL USE DISCLAIMER:
+
+This software contains intentional security vulnerabilities for educational 
+purposes only. Users of this software agree to:
+
+1. Use this software solely for educational, research, or training purposes
+2. Not use this software to attack, compromise, or gain unauthorized access 
+   to any systems, networks, or data
+3. Not use this software for any illegal, unethical, or malicious activities
+4. Take full responsibility for their use of this software
+5. Comply with all applicable laws and regulations
+
+The authors and contributors of this software are not responsible for any 
+misuse, damage, or legal consequences resulting from the use of this software.
+
+By using this software, you acknowledge that you understand its educational 
+purpose and agree to use it responsibly and ethically.
