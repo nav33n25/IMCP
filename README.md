@@ -213,36 +213,12 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for detailed contribution guidelines.
 
 ---
 
-## ⚖️ Legal & Ethical Usage
-
-### ✅ **Approved Uses**
-- **Security Education**: Teaching MCP vulnerability concepts
-- **Research**: Academic and professional security research
-- **Training**: Corporate security awareness programs
-- **Development**: Learning secure MCP development practices
-
-### ❌ **Prohibited Uses**
-- **Production Deployment**: Never deploy IMCP in production environments
-- **Malicious Attacks**: Do not use against systems without permission
-- **Commercial Exploitation**: Respect the educational mission
-- **Unethical Research**: Follow responsible disclosure principles
-
-### 📜 **Legal Disclaimer**
-This software is provided for educational purposes only. Users are responsible for ensuring their use complies with applicable laws and regulations. The developers assume no liability for misuse of this educational tool.
-
----
-
 ## 🔗 Resources & References
 
 ### 📚 **MCP Security Documentation**
 - [Official MCP Specification](https://modelcontextprotocol.io/)
 - [MCP Security Best Practices](https://modelcontextprotocol.io/docs/security)
 - [AI Security Research Papers](https://example.com/ai-security-research)
-
-### 🛡️ **Similar Educational Tools**
-- [DVWA](http://www.dvwa.co.uk/) - Damn Vulnerable Web Application
-- [WebGoat](https://owasp.org/www-project-webgoat/) - OWASP Web Application Security
-- [VulnHub](https://www.vulnhub.com/) - Vulnerable Virtual Machines
 
 ### 🎓 **Security Training Resources**
 - [OWASP AI Security](https://owasp.org/www-project-ai-security-and-privacy-guide/)
@@ -266,24 +242,6 @@ This software is provided for educational purposes only. Users are responsible f
 This project is licensed under the **MIT License** - see the [`LICENSE`](LICENSE) file for details.
 
 **Additional Educational Use Clause**: This software is intended for educational and research purposes only. Commercial use requires explicit permission from the maintainers.
-
----
-
-## 🙏 Acknowledgments
-
-- **DVWA Team** - Inspiration for deliberately vulnerable educational tools
-- **MCP Community** - Model Context Protocol development and documentation
-- **Security Researchers** - Vulnerability discovery and responsible disclosure
-- **Educational Community** - Feedback and improvement suggestions
-
----
-
-## 📞 Support & Community
-
-- **🐛 Issues**: [GitHub Issues](https://github.com/your-username/imcp-insecure-model-context-protocol/issues)
-- **💬 Discussions**: [GitHub Discussions](https://github.com/your-username/imcp-insecure-model-context-protocol/discussions)
-- **📧 Security**: Email security@example.com for vulnerability reports
-- **🐦 Updates**: Follow [@IMCPSecurity](https://twitter.com/IMCPSecurity) for updates
 
 ---
 
