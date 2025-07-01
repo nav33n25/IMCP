@@ -35,8 +35,17 @@ jobs:
       
     - name: Verify server starts
       run: |
-        timeout 10s npm start || true
-        echo "✅ Educational MCP server startup test completed"
+        echo "🚀 Testing MCP server startup..."
+        # Just verify the compiled file exists and is valid Node.js
+        if [ -f "build/vulnerable-mcp-server.js" ]; then
+          echo "✅ Educational MCP server build completed"
+          # Quick syntax check
+          node -c build/vulnerable-mcp-server.js
+          echo "✅ Educational MCP server syntax validation passed"
+        else
+          echo "❌ Server build failed"
+          exit 1
+        fi
         
     - name: Check TypeScript compilation
       run: |
@@ -54,7 +63,7 @@ jobs:
         
     - name: Documentation check
       run: |
-        required_files=("README.md" "LAB_GUIDE.md" "VULNERABILITY_TESTING_GUIDE.md" "COMPLETE_TESTING_SUITE.md" "LICENSE")
+        required_files=("README.md" "GITHUB_COPILOT_TESTING_GUIDE.md" "CONTRIBUTING.md" "LICENSE")
         for file in "${required_files[@]}"; do
           if [ -f "$file" ]; then
             echo "✅ $file found"
@@ -85,7 +94,7 @@ jobs:
         fi
         
         # Check for proper warnings
-        if grep -q "NOT FOR PRODUCTION" README.md; then
+        if grep -q "DO NOT deploy in production" README.md; then
           echo "✅ Production warning found"
         else
           echo "❌ Production warning missing"
@@ -137,26 +146,18 @@ jobs:
         fi
         
         # Check for ethical use guidelines
-        if grep -q "Ethical Use" README.md; then
+        if grep -q "Legal & Ethical Usage" README.md; then
           echo "✅ Ethical use guidelines found"
         else
           echo "❌ Ethical use guidelines missing"
           exit 1
         fi
         
-        # Verify lab guide exists and has content
-        if [ -s "LAB_GUIDE.md" ]; then
-          echo "✅ Lab guide found and has content"
+        # Verify testing guide exists and has content
+        if [ -s "GITHUB_COPILOT_TESTING_GUIDE.md" ]; then
+          echo "✅ Testing guide found and has content"
         else
-          echo "❌ Lab guide missing or empty"
-          exit 1
-        fi
-        
-        # Check vulnerability testing guide
-        if [ -s "VULNERABILITY_TESTING_GUIDE.md" ]; then
-          echo "✅ Vulnerability testing guide found"
-        else
-          echo "❌ Vulnerability testing guide missing"
+          echo "❌ Testing guide missing or empty"
           exit 1
         fi
         
@@ -173,20 +174,31 @@ jobs:
         echo "🔒 Running security audit..."
         
         # Check for hardcoded secrets (should not have any real ones)
-        if grep -r "sk-" src/ --exclude-dir=node_modules || \
-           grep -r "AIza" src/ --exclude-dir=node_modules || \
-           grep -r "password.*=" src/ --exclude-dir=node_modules; then
-          echo "⚠️ Potential hardcoded secrets found - ensure they are educational examples only"
+        secret_found=false
+        if grep -r "sk-[a-zA-Z0-9]" src/ --exclude-dir=node_modules 2>/dev/null; then
+          echo "⚠️ Potential OpenAI API keys found - ensure they are educational examples only"
+          secret_found=true
+        fi
+        if grep -r "AIza[a-zA-Z0-9]" src/ --exclude-dir=node_modules 2>/dev/null; then
+          echo "⚠️ Potential Google API keys found - ensure they are educational examples only"
+          secret_found=true
+        fi
+        if $secret_found; then
+          echo "ℹ️ Secrets detected - this is expected for educational vulnerability demonstrations"
         fi
         
         # Verify this is marked as educational
-        if ! grep -q "educational" package.json; then
+        if grep -q "educational" package.json; then
+          echo "✅ Package marked as educational"
+        else
           echo "❌ Package not marked as educational"
           exit 1
         fi
         
-        # Check for production warnings
-        if ! grep -q "DO NOT USE IN PRODUCTION" package.json; then
+        # Check for production warnings in description
+        if grep -q "DO NOT USE IN PRODUCTION" package.json; then
+          echo "✅ Production warning found in package.json"
+        else
           echo "❌ Production warning missing from package.json"
           exit 1
         fi
