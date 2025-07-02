@@ -15,9 +15,9 @@ Welcome to **IMCP** – a deliberately vulnerable framework that exposes **14 cr
 
 ## 🎯 What is IMCP?
 
-**IMCP (Insecure Model Context Protocol)** is inspired by the famous [DVWA (Damn Vulnerable Web Application)](http://www.dvwa.co.uk/) but specifically designed for the emerging world of **AI Model Context Protocol (MCP)** security. 
+**IMCP (Insecure Model Context Protocol)** specifically designed for the emerging world of **AI Model Context Protocol (MCP)** security. 
 
-Just as DVWA revolutionized web application security training, IMCP provides a safe, legal environment to explore, understand, and learn how to exploit and defend against MCP vulnerabilities.
+IMCP provides a safe, legal environment to explore, understand, and learn how to exploit and defend against MCP vulnerabilities.
 
 ### 🔍 Why IMCP?
 
