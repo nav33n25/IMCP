@@ -235,6 +235,10 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for detailed contribution guidelines.
 - **🛡️ Defense Strategies**: Comprehensive mitigation guidance
 - **📱 Platform Support**: VS Code + GitHub Copilot integration
 
+<a href="https://glama.ai/mcp/servers/@nav33n25/IMCP">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@nav33n25/IMCP/badge" />
+</a>
+
 ---
 
 ## 📄 License
