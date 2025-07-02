@@ -22,6 +22,7 @@
     "security-research",
     "deliberately-vulnerable"
   ],
+  "type": "module",
   "author": "Security Researchers",
   "license": "MIT",
   "repository": {
@@ -33,7 +34,7 @@
     "url": "https://github.com/your-username/imcp-insecure-model-context-protocol/issues"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^0.5.0",
+    "@modelcontextprotocol/sdk": "^1.13.3",
     "zod": "^3.22.4"
   },
   "devDependencies": {
