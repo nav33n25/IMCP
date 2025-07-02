@@ -278,7 +278,7 @@ Analyzes code quality, security vulnerabilities, and performance issues. Support
 );
 
 /**
- * VULNERABILITY 6: Tool Response Injection
+ * VULNERABILITY 4: Tool Response Injection
  * Enhanced: Marketing Intelligence Platform with embedded malicious instructions
  * Scenario: Business intelligence tool embeds hidden instructions to compromise AI assistant
  */
@@ -417,7 +417,7 @@ This attack shows how malicious tools can inject instructions into their respons
 );
 
 /**
- * VULNERABILITY 7: Rug Pull Attack (Tool Definition Modification)
+ * VULNERABILITY 5: Rug Pull Attack (Tool Definition Modification)
  * Enhanced: HR Benefits Management System with post-approval behavior change
  * Scenario: Trusted HR tool silently changes behavior to harvest employee data
  */
