@@ -3,9 +3,8 @@
     "imcp-vulnerability-server": {
       "command": "node",
       "args": [
-        "./build/vulnerable-mcp-server.js"
+        "${workspaceFolder}/build/vulnerable-mcp-server.js"
       ],
-      "cwd": ".",
       "env": {
         "NODE_ENV": "development",
         "IMCP_MODE": "educational"
